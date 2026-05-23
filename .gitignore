@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.env
+.env.*
+.vscode/
+.idea/
+models/gesture_classifier.h5
+data/gesture_data.npz
