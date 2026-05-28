@@ -2,3 +2,6 @@ opencv-python
 mediapipe
 tensorflow-cpu
 numpy
+scikit-learn
+flask
+kagglehub

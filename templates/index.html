@@ -1,21 +1,207 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhristi AI</title>
 
-    <title>AI Sign Language Translator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
-    <h1>AI Powered Sign Language Translator</h1>
+    <div class="background-glow"></div>
 
-    <img src="{{ url_for('video') }}" width="700">
+    <!-- Navbar -->
+    <header class="navbar">
+
+        <div class="logo">
+            <span>👁️</span>
+            <h2>Dhristi AI</h2>
+        </div>
+
+        <button class="nav-btn">
+            Live Translation
+        </button>
+
+    </header>
+
+    <!-- Hero Section -->
+    <main class="hero-section">
+
+        <!-- Left -->
+        <div class="hero-content">
+
+            <p class="tag">
+                AI Powered Communication
+            </p>
+
+            <h1>
+                Real-Time
+                <span>Sign Language</span>
+                Translator
+            </h1>
+
+            <p class="description">
+                Break communication barriers with our AI-powered sign language
+                recognition system. Detect hand gestures instantly and convert
+                them into readable text in real time.
+            </p>
+
+            <div class="stats">
+
+                <div class="card">
+                    <h2>26+</h2>
+                    <p>Alphabet Signs</p>
+                </div>
+
+                <div class="card">
+                    <h2>AI</h2>
+                    <p>Powered Detection</p>
+                </div>
+
+                <div class="card">
+                    <h2>Live</h2>
+                    <p>Camera Translation</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Right -->
+        <div class="video-section">
+
+            <div class="video-card">
+
+                <div class="video-header">
+
+                    <div class="dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <p>Live Camera Feed</p>
+
+                </div>
+
+                <div class="video-wrapper">
+
+                    <!-- Camera Feed -->
+                    <img
+                        id="videoFeed"
+                        src=""
+                        alt="Camera Feed"
+                        style="display:none;"
+                    >
+
+                    <!-- Placeholder -->
+                    <div id="cameraPlaceholder" class="placeholder">
+
+                        <h2>📷 Camera is Off</h2>
+
+                        <p>
+                            Click Start Detection to begin
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- Buttons -->
+                <div class="camera-buttons">
+
+                    <button class="primary-btn" onclick="startDetection()">
+                        Start Detection
+                    </button>
+
+                    <button class="secondary-btn" onclick="stopDetection()">
+                        Stop Detection
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Features -->
+    <section class="features-section">
+
+        <div class="feature-box">
+            <div class="icon">⚡</div>
+
+            <h3>Fast Detection</h3>
+
+            <p>
+                Real-time AI gesture recognition with smooth performance.
+            </p>
+        </div>
+
+        <div class="feature-box">
+            <div class="icon">🧠</div>
+
+            <h3>Machine Learning</h3>
+
+            <p>
+                Powered by computer vision and deep learning models.
+            </p>
+        </div>
+
+        <div class="feature-box">
+            <div class="icon">🌍</div>
+
+            <h3>Accessibility</h3>
+
+            <p>
+                Helping bridge the gap between sign and spoken language.
+            </p>
+        </div>
+
+    </section>
+
+    <!-- JavaScript -->
+    <script>
+
+        function startDetection() {
+
+            const video = document.getElementById("videoFeed");
+
+            const placeholder =
+                document.getElementById("cameraPlaceholder");
+
+            // Start Flask feed
+            video.src = "{{ url_for('video') }}";
+
+            video.style.display = "block";
+
+            placeholder.style.display = "none";
+        }
+
+        function stopDetection() {
+
+            const video = document.getElementById("videoFeed");
+
+            const placeholder =
+                document.getElementById("cameraPlaceholder");
+
+            // Stop feed
+            video.src = "";
+
+            video.style.display = "none";
+
+            placeholder.style.display = "flex";
+        }
+
+    </script>
 
 </body>
-
 </html>
